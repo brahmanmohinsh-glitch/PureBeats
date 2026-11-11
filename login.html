@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#00f5d4">
+  <title>Sign In — PureBeats</title>
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Specific Login Gateway Styling */
+    .auth-bg-orbs {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      animation: floatOrb 12s infinite ease-in-out alternate;
+    }
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+      top: -10%;
+      left: 10%;
+    }
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+      bottom: -15%;
+      right: 5%;
+      animation-delay: -6s;
+    }
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--accent-pink) 0%, transparent 70%);
+      top: 40%;
+      left: 60%;
+      animation-delay: -3s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, -30px) scale(1.15); }
+    }
+
+    .auth-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 460px;
+      padding: 20px;
+    }
+
+    .auth-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      text-decoration: none;
+    }
+
+    .auth-card-body {
+      background: rgba(18, 24, 38, 0.82);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .auth-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .auth-header p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .social-auth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .btn-social {
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .btn-social:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-glass);
+    }
+
+    .demo-autofill-bar {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px dashed rgba(0, 245, 212, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .btn-demo-click {
+      background: var(--accent-cyan);
+      color: var(--bg-darkest);
+      border: none;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition-fast);
+    }
+    .btn-demo-click:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="auth-page">
+  <!-- Glowing Orbs -->
+  <div class="auth-bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="auth-container">
+    <!-- Brand Logo -->
+    <a href="index.html" class="auth-brand">
+      <div class="brand-icon-wrap">
+        <div class="brand-pulse-ring"></div>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+      </div>
+      <span class="brand-title" style="font-size: 26px;">PureBeats</span>
+      <span class="brand-badge">STUDIO</span>
+    </a>
+
+    <!-- Auth Card -->
+    <div class="auth-card-body">
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">Create Account</button>
+      </div>
+
+      <div class="auth-header">
+        <h2 id="auth-title">Welcome Back</h2>
+        <p id="auth-subtitle">Stream unlimited music with high-fidelity visualizer.</p>
+      </div>
+
+      <!-- Quick Social Buttons -->
+      <div class="social-auth-grid">
+        <button class="btn-social" type="button" onclick="loginWithProvider('Google')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"/>
+          </svg>
+          Google
+        </button>
+        <button class="btn-social" type="button" onclick="loginWithProvider('Apple')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.8 1.44-.6.69-1.12 1.82-.98 2.91 1.07.08 2.15-.55 2.79-1.31z"/>
+          </svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="auth-divider">or continue with email</div>
+
+      <!-- Auth Form -->
+      <form class="auth-form" id="auth-form" onsubmit="handleAuthSubmit(event)">
+        <div class="form-group" id="name-group" style="display: none;">
+          <label class="form-label" for="user-fullname">Full Name</label>
+          <input type="text" class="form-input" id="user-fullname" placeholder="Alex River">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="user-email">Email Address</label>
+          <input type="email" class="form-input" id="user-email" placeholder="alex@purebeats.io" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="user-password">Password</label>
+          <input type="password" class="form-input" id="user-password" placeholder="••••••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-submit-auth" id="btn-auth-submit">
+          Sign In to PureBeats
+        </button>
+
+        <a href="index.html" class="btn-guest-pass" onclick="loginAsGuest()">
+          <span>Continue as Guest (Direct Play)</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </form>
+
+      <!-- Instant Demo Autofill -->
+      <div class="demo-autofill-bar">
+        <span>Instant Pro Explorer demo profile</span>
+        <button type="button" class="btn-demo-click" onclick="demoAutofill()">Quick Demo</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentMode = 'login';
+
+    function switchAuthTab(mode) {
+      currentMode = mode;
+      const tabLogin = document.getElementById('tab-login');
+      const tabSignup = document.getElementById('tab-signup');
+      const nameGroup = document.getElementById('name-group');
+      const authTitle = document.getElementById('auth-title');
+      const authSubtitle = document.getElementById('auth-subtitle');
+      const submitBtn = document.getElementById('btn-auth-submit');
+
+      if (mode === 'signup') {
+        tabLogin.classList.remove('active');
+        tabSignup.classList.add('active');
+        nameGroup.style.display = 'flex';
+        authTitle.textContent = 'Create PureBeats Account';
+        authSubtitle.textContent = 'Join the next generation of online audio streaming.';
+        submitBtn.textContent = 'Create Pro Account';
+      } else {
+        tabLogin.classList.add('active');
+        tabSignup.classList.remove('active');
+        nameGroup.style.display = 'none';
+        authTitle.textContent = 'Welcome Back';
+        authSubtitle.textContent = 'Stream unlimited music with high-fidelity visualizer.';
+        submitBtn.textContent = 'Sign In to PureBeats';
+      }
+    }
+
+    function demoAutofill() {
+      document.getElementById('user-email').value = 'alex.river@purebeats.io';
+      document.getElementById('user-password').value = 'purebeats2026';
+      if (currentMode === 'signup') {
+        document.getElementById('user-fullname').value = 'Alex River';
+      }
+      handleAuthSubmit(new Event('submit'));
+    }
+
+    function handleAuthSubmit(e) {
+      if (e) e.preventDefault();
+      const email = document.getElementById('user-email').value || 'alex.river@purebeats.io';
+      const name = (currentMode === 'signup' && document.getElementById('user-fullname').value) 
+        ? document.getElementById('user-fullname').value 
+        : email.split('@')[0].replace('.', ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+      const userObj = {
+        name: name,
+        email: email,
+        status: 'Pro Listener',
+        avatar: name.charAt(0).toUpperCase()
+      };
+
+      localStorage.setItem('purebeats_user', JSON.stringify(userObj));
+      localStorage.setItem('pulse_user', JSON.stringify(userObj));
+      window.location.href = 'index.html';
+    }
+
+    function loginAsGuest() {
+      const guestObj = {
+        name: 'Guest Explorer',
+        email: 'guest@purebeats.io',
+        status: 'Free Listener',
+        avatar: 'G'
+      };
+      localStorage.setItem('purebeats_user', JSON.stringify(guestObj));
+      localStorage.setItem('pulse_user', JSON.stringify(guestObj));
+    }
+
+    function loginWithProvider(provider) {
+      const userObj = {
+        name: `${provider} Listener`,
+        email: `user@${provider.toLowerCase()}.com`,
+        status: 'Verified VIP',
+        avatar: provider.charAt(0)
+      };
+      localStorage.setItem('purebeats_user', JSON.stringify(userObj));
+      localStorage.setItem('pulse_user', JSON.stringify(userObj));
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

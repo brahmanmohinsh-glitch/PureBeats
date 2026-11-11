@@ -1,0 +1,9 @@
+# Robots.txt for PureBeats Music Player by Mohinsh
+User-agent: *
+Allow: /
+Disallow: /scratch/
+Disallow: /.system_generated/
+
+# Sitemaps
+Sitemap: https://purebeats.app/sitemap.xml
+

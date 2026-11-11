@@ -1,0 +1,50 @@
+{
+  "name": "PureBeats — Pure Music Player by Mohinsh",
+  "short_name": "PureBeats",
+  "description": "Stream 2,795+ studio master songs in 320kbps across Bollywood, Haryanvi, Punjabi, Rap, Old is Gold & Better OG with live 5-band studio equalizer and 3D vinyl turntable deck.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0b12",
+  "theme_color": "#00f5d4",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192' fill='none'%3E%3Crect width='192' height='192' rx='40' fill='%230f172a'/%3E%3Ccircle cx='96' cy='96' r='60' stroke='%2300f5d4' stroke-width='8' stroke-dasharray='12 8'/%3E%3Ccircle cx='96' cy='96' r='40' fill='%237928ca' fill-opacity='0.4' stroke='%23f72585' stroke-width='6'/%3E%3Cpath d='M84 76L122 96L84 116V76Z' fill='%2300f5d4'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'%3E%3Crect width='512' height='512' rx='100' fill='%230f172a'/%3E%3Ccircle cx='256' cy='256' r='160' stroke='%2300f5d4' stroke-width='20' stroke-dasharray='24 16'/%3E%3Ccircle cx='256' cy='256' r='100' fill='%237928ca' fill-opacity='0.4' stroke='%23f72585' stroke-width='16'/%3E%3Cpath d='M224 200L320 256L224 312V200Z' fill='%2300f5d4'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Bollywood Hits",
+      "url": "./index.html#bollywood",
+      "description": "Stream 278 Bollywood Master Songs"
+    },
+    {
+      "name": "Punjabi Swag",
+      "url": "./index.html#punjabi",
+      "description": "Sidhu Moose Wala, Diljit, Karan Aujla"
+    },
+    {
+      "name": "Desi Hip-Hop / Rap",
+      "url": "./index.html#rap",
+      "description": "DIVINE, KR$NA, Seedhe Maut, Emiway"
+    },
+    {
+      "name": "3D Vinyl Turntable",
+      "url": "./index.html#turntable",
+      "description": "PureBeats Analog Turntable Deck"
+    }
+  ],
+  "categories": ["music", "entertainment", "audio", "lifestyle"],
+  "orientation": "any"
+}
